@@ -32,7 +32,7 @@
                         <td>{{ $key->nama_lokasi }}</td>
                         <td>{{ $key->PODESC }}</td>
                         <td>
-                          <button class="btn btn-primary">Detail</button>
+                          <a class="btn btn-primary" href="{{ url('struk/' . $key->POREFN) }}">Detail</a>
                           <button class="btn btn-warning">PDF</button>
                         </td>
                       </tr>

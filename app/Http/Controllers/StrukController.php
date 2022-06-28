@@ -10,44 +10,30 @@ class StrukController extends Controller
 {
   public function index()
   {
-    return view('struk', [
+    return view('struk.index', [
       'struk'   => DB::table('rekap')->get(),
       'title'   => 'Struk',
       'active'  => 'struk'
     ]);
   }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Struk  $struk
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Struk $struk)
-    {
-        //
-    }
+  
+  public function create()
+  {
+      //
+  }
+  
+  public function store(Request $request)
+  {
+      //
+  }
+  
+  public function show($porefn)
+  {
+    $data           = DB::table('rekap')->where('POREFN', '=', $porefn)->get();
+    $data['title']  = 'Struk';
+    $data['active'] = 'struk'; 
+    return view('struk.detail', $data);
+  }
 
     /**
      * Show the form for editing the specified resource.

@@ -21,5 +21,6 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
-  Route::resource('/struk', App\Http\Controllers\StrukController::class);
+  Route::get('/struk', [App\Http\Controllers\StrukController::class, 'index']);
+  Route::get('/struk/{porefn}', [App\Http\Controllers\StrukController::class, 'show']);
 });
