@@ -24,16 +24,23 @@ class UserController extends Controller
     ]);
   }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate([
+      'nama_lengkap'  => 'required',
+      'nip'           => 'required',
+      'level'         => 'required',
+      'username'      => 'required',
+      'password'      => 'required',
+      'email'         => 'required',
+      'no_hp'         => 'required',
+      'alamat'        => 'required',
+    ]);
+
+    User::create($request->all());
+
+    return redirect('user')->with('success', 'Berhasil mendapatkan user');
+  }
 
     /**
      * Display the specified resource.

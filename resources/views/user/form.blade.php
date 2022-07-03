@@ -9,7 +9,16 @@
           <!-- general form elements -->
           <div class="card card-primary">
             <!-- form start -->
-            <form action="{{ url('user/store') }}" method="POST">
+            @if ($errors->any())
+              <div class="alert alert-danger">
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+            <form action="{{ url('user') }}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
