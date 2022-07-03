@@ -20,7 +20,7 @@
             @endif
             <form action="{{ url($mode === 'add' ? 'user' : 'user/' . $id) }}" method="POST">
               @csrf
-              <?php if ($mode === 'edit') ?> @method('PUT') 
+              {{ $mode === 'edit' ? method_field('PUT') : '' }}
               <div class="card-body">
                 <div class="form-group">
                   <label>Level</label>

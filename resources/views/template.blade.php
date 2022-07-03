@@ -47,7 +47,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="#" class="d-block">{{ auth()->user()->nama_lengkap }}</a>
         </div>
       </div>
 
@@ -66,12 +66,16 @@
               <p>Struk</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ url('user') }}" class="nav-link {{ $active === 'user' ? 'active' : '' }}">
-              <i class="nav-icon fas fa-user"></i>
-              <p>User</p>
-            </a>
-          </li>
+          <?php
+            if (auth()->user()->level === 'admin') { ?>
+              <li class="nav-item">
+                <a href="{{ url('user') }}" class="nav-link {{ $active === 'user' ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-user"></i>
+                  <p>User</p>
+                </a>
+              </li>
+            <?php }
+          ?>
           <li class="nav-item">
             <a href="{{ url('logout') }}" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

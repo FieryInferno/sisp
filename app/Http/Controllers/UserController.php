@@ -38,7 +38,10 @@ class UserController extends Controller
       'alamat'        => 'required',
     ]);
 
-    User::create($request->all());
+    $data             = $request->all();
+    $data['password'] = password_hash($request->password, PASSWORD_DEFAULT);
+    
+    User::create($data);
 
     return redirect('user')->with('success', 'Berhasil mendapatkan user');
   }
@@ -64,7 +67,11 @@ class UserController extends Controller
       'alamat'        => 'required',
     ]);
 
-    $user->update($request->all());
+    $data             = $request->all();
+
+    if ($request->password) $data['password'] = password_hash($request->password, PASSWORD_DEFAULT);
+
+    $user->update($data);
 
     return redirect('user')->with('success','Berhasil edit user.');
   }

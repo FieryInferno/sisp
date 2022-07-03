@@ -6,9 +6,13 @@
       <div class="row">
         <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <a class="btn btn-success" href="{{ url('struk/create') }}">Tambah</a>
-              </div>
+              <?php
+                if (auth()->user()->level === 'admin') { ?>
+                  <div class="card-header">
+                    <a class="btn btn-success" href="{{ url('struk/create') }}">Tambah</a>
+                  </div>
+                <?php }
+              ?>
               <!-- /.card-header -->
               <div class="card-body">
                 @if (session('success'))
