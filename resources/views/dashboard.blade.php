@@ -24,8 +24,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>150</h3>
-
+              <h3>{{ $penjualan }}</h3>
               <p>Penjualan Bulan Ini</p>
             </div>
             <div class="icon">
@@ -38,7 +37,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>53</h3>
+              <h3>{{ formatRupiah(round($pendapatan, 0)) }}</h3>
               <p>Pendapatan Bulan Lalu</p>
             </div>
             <div class="icon">
