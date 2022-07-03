@@ -177,7 +177,7 @@
   });
 
   //Initialize Select2 Elements
-  $('.select2').select2({'placeholder': 'Pilih Cabang'})
+  $('.select2').select2({'placeholder': 'Pilih'})
 </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a class="btn btn-success" href="{{ url('struk/create') }}">Tambah</a>
+                <a class="btn btn-success" href="{{ url('user/create') }}">Tambah</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

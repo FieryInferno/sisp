@@ -9,37 +9,79 @@
           <!-- general form elements -->
           <div class="card card-primary">
             <!-- form start -->
-            <form action="{{ url('struk/store') }}" method="POST">
+            <form action="{{ url('user/store') }}" method="POST">
               @csrf
               <div class="card-body">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nomor Ref</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor Ref" name="nomor_ref">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Kode</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Kode" name="kode">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Rek</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Rek" name="rek">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Berita</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Berita" name="berita">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Nominal</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nominal" name="nominal">
-                </div>
-                <div class="form-group">
-                  <label>Cabang</label>
-                  <select class="form-control select2" style="width: 100%;" name="cabang">
+                  <label>Level</label>
+                  <select class="form-control select2" style="width: 100%;" name="level">
                     <option></option>
-                    @foreach ($cabang as $key)
-                      <option value="{{ $key->id }}">{{ $key->nama }}</option>
-                    @endforeach
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
                   </select>
+                </div>
+                <div class="form-group">
+                  <label>NIP</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="NIP"
+                    name="nip"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>Nama Lengkap</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Nama Lengkap"
+                    name="nama_lengkap"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Username"
+                    name="username"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    name="password"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    name="email"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>No. Hape</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="No. Hape"
+                    name="no_hp"
+                  >
+                </div>
+                <div class="form-group">
+                  <label>Alamat</label>
+                  <textarea
+                    name="alamat"
+                    cols="30"
+                    rows="10"
+                    class="form-control"
+                  ></textarea>
                 </div>
               </div>
               <!-- /.card-body -->
