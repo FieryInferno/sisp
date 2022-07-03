@@ -22,5 +22,7 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'index']);
 Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
   Route::get('/struk', [App\Http\Controllers\StrukController::class, 'index']);
+  Route::get('/struk/create', [App\Http\Controllers\StrukController::class, 'create']);
+  Route::post('/struk/store', [App\Http\Controllers\StrukController::class, 'store']);
   Route::get('/struk/{rekap}', [App\Http\Controllers\StrukController::class, 'show']);
 });

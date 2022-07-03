@@ -20,12 +20,26 @@ class StrukController extends Controller
   
   public function create()
   {
-      //
+    return view('struk.form', [
+      'title'   => 'Struk',
+      'active'  => 'struk',
+      'cabang'  => DB::table('lokasi')->get(),
+    ]);
   }
   
   public function store(Request $request)
   {
-      //
+    // dd($request);
+    DB::table('penawaran')->insert([
+      'POREFN'    => $request->nomor_ref,
+      'POTRCO'    => $request->kode,
+      'PORECO'    => $request->rek,
+      'PODESC'    => $request->berita,
+      'NOMINAL'   => $request->nominal,
+      'lokasi_id' => $request->cabang
+    ]);
+
+    return redirect('struk')->with('success', 'Berhasil menambah struk');
   }
   
   public function show(Rekap $rekap)

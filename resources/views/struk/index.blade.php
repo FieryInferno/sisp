@@ -7,10 +7,15 @@
         <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <button class="btn btn-success">Tambah</button>
+                <a class="btn btn-success" href="{{ url('struk/create') }}">Tambah</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                @if (session('success'))
+                  <div class="alert alert-success">
+                    {{ session('success') }}
+                  </div>
+                @endif
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
