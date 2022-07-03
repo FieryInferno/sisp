@@ -66,6 +66,12 @@
               <p>Struk</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('user') }}" class="nav-link {{ $active === 'user' ? 'active' : '' }}">
+              <i class="nav-icon fas fa-user"></i>
+              <p>User</p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -166,6 +172,8 @@
     })
 
     $("#example1").DataTable({"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+    $("#example2").DataTable()
   });
 
   //Initialize Select2 Elements
