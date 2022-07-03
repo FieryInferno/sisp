@@ -16,6 +16,27 @@
                     {{ session('success') }}
                   </div>
                 @endif
+                <form action="" method="get" class="col-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Tanggal Awal</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Tanggal Awal" name="tanggal_awal">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Tanggal akhir</label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Tanggal Akhir" name="tanggal_akhir">
+                  </div>
+                  <div class="form-group">
+                    <label>Cabang</label>
+                    <select class="form-control select2" style="width: 100%;" name="cabang">
+                      <option></option>
+                      @foreach ($cabang as $key)
+                        <option value="{{ $key->id }}">{{ $key->nama }}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <br>
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>

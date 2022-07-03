@@ -9,12 +9,27 @@ use Illuminate\Support\Facades\DB;
 
 class StrukController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
+    // dd($request->query('tanggal_awal'));s
+    $tanggal_awal = $request->query('tanggal_awal');
+    $tanggal_akhir = $request->query('tanggal_akhir');
+    $cabang       = $request->query('cabang');
+    $struk        = DB::table('rekap');
+    
+    if ($tanggal_awal && $tanggal_akhir) {
+      $struk  = $struk->whereBetween('created_at', [$tanggal_awal, $tanggal_akhir]);
+    }
+    
+    if ($cabang) {
+      $struk  = $struk->where('id_lokasi', '=', $cabang);
+    }
+
     return view('struk.index', [
-      'struk'   => DB::table('rekap')->get(),
+      'struk'   => $struk->get(),
       'title'   => 'Struk',
-      'active'  => 'struk'
+      'active'  => 'struk',
+      'cabang'  => DB::table('lokasi')->get(),
     ]);
   }
   
