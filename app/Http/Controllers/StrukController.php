@@ -11,7 +11,6 @@ class StrukController extends Controller
 {
   public function index(Request $request)
   {
-    // dd($request->query('tanggal_awal'));s
     $tanggal_awal = $request->query('tanggal_awal');
     $tanggal_akhir = $request->query('tanggal_akhir');
     $cabang       = $request->query('cabang');
@@ -44,7 +43,6 @@ class StrukController extends Controller
   
   public function store(Request $request)
   {
-    // dd($request);
     DB::table('penawaran')->insert([
       'POREFN'    => $request->nomor_ref,
       'POTRCO'    => $request->kode,
@@ -63,38 +61,9 @@ class StrukController extends Controller
     $rekap['active'] = 'struk'; 
     return view('struk.detail', $rekap);
   }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Struk  $struk
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Struk $struk)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Struk  $struk
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Struk $struk)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Struk  $struk
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Struk $struk)
-    {
-        //
-    }
+  
+  public function print(Request $request)
+  {
+    return view('struk.print', ['struk' => $request->struk]);
+  }
 }

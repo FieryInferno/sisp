@@ -36,34 +36,49 @@
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
-                <br>
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Tanggal</th>
-                      <th>Ref</th>
-                      <th>Cabang</th>
-                      <th>Berita</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php $no = 1; ?>
-                    @foreach ($struk as $key)
+                <hr>
+                <form action="{{ url('struk') }}" method="post">
+                  @csrf
+                  <button type="submit" class="btn btn-primary">Struk</button>
+                  <br>
+                  <br>
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
                       <tr>
-                        <td>{{ $no++ }}</td>
-                        <td>{{ $key->created_at }}</td>
-                        <td>{{ $key->POREFN }}</td>
-                        <td>{{ $key->nama_lokasi }}</td>
-                        <td>{{ $key->PODESC }}</td>
-                        <td>
-                          <a class="btn btn-primary" href="{{ url('struk/' . $key->POREFN) }}">Detail</a>
-                        </td>
+                        <th>#</th>
+                        <th>Tanggal</th>
+                        <th>Ref</th>
+                        <th>Cabang</th>
+                        <th>Berita</th>
+                        <th>Aksi</th>
                       </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      <?php $no = 1; ?>
+                      @foreach ($struk as $key)
+                        <tr>
+                          <td>
+                            <div class="form-check">
+                              <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="struk[]"
+                                value="{{ json_encode($key) }}"
+                              >
+                            </div>
+                          </td>
+                          <td>{{ $key->created_at }}</td>
+                          <td>{{ $key->POREFN }}</td>
+                          <td>{{ $key->nama_lokasi }}</td>
+                          <td>{{ $key->PODESC }}</td>
+                          <td>
+                            <a class="btn btn-primary" href="{{ url('struk/' . $key->POREFN) }}">Detail</a>
+                          </td>
+                        </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </form>
               </div>
               <!-- /.card-body -->
             </div>
