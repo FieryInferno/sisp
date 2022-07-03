@@ -18,7 +18,7 @@
                       <th>Tanggal</th>
                       <th>Ref</th>
                       <th>Cabang</th>
-                      <th>Desc</th>
+                      <th>Berita</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -33,7 +33,6 @@
                         <td>{{ $key->PODESC }}</td>
                         <td>
                           <a class="btn btn-primary" href="{{ url('struk/' . $key->POREFN) }}">Detail</a>
-                          <button class="btn btn-warning">PDF</button>
                         </td>
                       </tr>
                     @endforeach

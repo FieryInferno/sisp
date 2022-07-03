@@ -9,19 +9,78 @@
             <div class="card-body">
               <img src="{{ asset('images') }}/kop.PNG" alt="" style="width: 100%;">
               <div class="d-flex justify-content-center mb-5">
-                <h3><strong>Nomor Ref 0012345</strong></h3>
+                <h3><strong>Nomor Ref {{ $POREFN }}</strong></h3>
               </div>
-              <div class="row">
-                <div class="col-xl-6">Kode : 1000</div>
-                <div class="col-xl-6">Cab : Jakarta</div>
-              </div>
-              <div class="row">
-                <div class="col-xl-6">Rek : 123</div>
-                <div class="col-xl-6">Tgl : 2022-06-02</div>
-              </div>
-              <div>Berita : Pemasangan Router</div>
-              <div>Nominal : Rp. 250.000</div>
-              <div>Terbilang : Dua ratus lima puluh ribu rupiah</div>
+              <table width="100%">
+                <tr>
+                  <td>Kode</td>
+                  <td>:</td>
+                  <td>{{ $POTRCO }}</td>
+                  <td>Cab</td>
+                  <td>:</td>
+                  <td>{{ $nama_lokasi }}</td>
+                </tr>
+                <tr>
+                  <td>Rek</td>
+                  <td>:</td>
+                  <td>{{ $PORECO }}</td>
+                  <td>Tgl.</td>
+                  <td>:</td>
+                  <td>{{ substr($created_at, 0, 10) }}</td>
+                </tr>
+                <tr>
+                  <td>Berita</td>
+                  <td>:</td>
+                  <td>{{ $PODESC }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Nominal</td>
+                  <td>:</td>
+                  <td>{{ formatRupiah(round($NOMINAL, 0)) }}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Terbilang</td>
+                  <td>:</td>
+                  <td>{{ terbilang((int) round($NOMINAL, 0)) }} rupiah</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td colspan="3">
+                    <div>
+                      {!! QrCode::size(125)->generate(
+                        'nominal: ' . formatRupiah(round($NOMINAL, 0)) .
+                        ',cabang: ' . $nama_lokasi .
+                        ',tanggal: ' . substr($created_at, 0, 10) .
+                        ',berita: ' . $PODESC
+                      ); !!}
+                    </div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <h2 class="d-flex justify-content-center">
+                <strong>Terima Kasih</strong>  
+              </h2>
             </div>
           </div>
         </div>

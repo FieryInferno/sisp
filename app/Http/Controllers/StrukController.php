@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Struk;
+use App\Models\Rekap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -27,12 +28,11 @@ class StrukController extends Controller
       //
   }
   
-  public function show($porefn)
+  public function show(Rekap $rekap)
   {
-    $data           = DB::table('rekap')->where('POREFN', '=', $porefn)->get();
-    $data['title']  = 'Struk';
-    $data['active'] = 'struk'; 
-    return view('struk.detail', $data);
+    $rekap['title']  = 'Struk';
+    $rekap['active'] = 'struk'; 
+    return view('struk.detail', $rekap);
   }
 
     /**
