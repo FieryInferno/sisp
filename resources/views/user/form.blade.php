@@ -18,15 +18,16 @@
                 </ul>
               </div>
             @endif
-            <form action="{{ url('user') }}" method="POST">
+            <form action="{{ url($mode === 'add' ? 'user' : 'user/' . $id) }}" method="POST">
               @csrf
+              <?php if ($mode === 'edit') ?> @method('PUT') 
               <div class="card-body">
                 <div class="form-group">
                   <label>Level</label>
                   <select class="form-control select2" style="width: 100%;" name="level">
                     <option></option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
+                    <option value="admin" <?= $mode === 'edit' && $level === 'admin' ? 'selected' : ''; ?>>Admin</option>
+                    <option value="user" <?= $mode === 'edit' && $level === 'user' ? 'selected' : ''; ?>>User</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -36,6 +37,7 @@
                     class="form-control"
                     placeholder="NIP"
                     name="nip"
+                    value="<?= $mode === 'edit' ? $nip : '' ; ?>"
                   >
                 </div>
                 <div class="form-group">
@@ -45,6 +47,7 @@
                     class="form-control"
                     placeholder="Nama Lengkap"
                     name="nama_lengkap"
+                    value="<?= $mode === 'edit' ? $nama_lengkap : '' ; ?>"
                   >
                 </div>
                 <div class="form-group">
@@ -54,6 +57,7 @@
                     class="form-control"
                     placeholder="Username"
                     name="username"
+                    value="<?= $mode === 'edit' ? $username : '' ; ?>"
                   >
                 </div>
                 <div class="form-group">
@@ -72,6 +76,7 @@
                     class="form-control"
                     placeholder="Email"
                     name="email"
+                    value="<?= $mode === 'edit' ? $email : '' ; ?>"
                   >
                 </div>
                 <div class="form-group">
@@ -81,6 +86,7 @@
                     class="form-control"
                     placeholder="No. Hape"
                     name="no_hp"
+                    value="<?= $mode === 'edit' ? $no_hp : '' ; ?>"
                   >
                 </div>
                 <div class="form-group">
@@ -90,7 +96,7 @@
                     cols="30"
                     rows="10"
                     class="form-control"
-                  ></textarea>
+                  ><?= $mode === 'edit' ? $alamat : '' ; ?></textarea>
                 </div>
               </div>
               <!-- /.card-body -->
