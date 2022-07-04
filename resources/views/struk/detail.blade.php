@@ -8,6 +8,7 @@
           <div class="card">
             <div class="card-body">
               <img src="{{ asset('images') }}/kop.PNG" alt="" style="width: 100%;">
+              <div class="watermark-image"></div>
               <div class="d-flex justify-content-center mb-5">
                 <h3><strong>Nomor Ref {{ $POREFN }}</strong></h3>
               </div>

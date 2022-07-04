@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2022 at 02:02 PM
+-- Generation Time: Jul 03, 2022 at 01:57 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -80,7 +80,8 @@ CREATE TABLE `penawaran` (
 
 INSERT INTO `penawaran` (`id`, `BRNAME`, `RENAME`, `POREFN`, `POTRCO`, `PORECO`, `PODESC`, `PODTPO`, `NOMINAL`, `POSTAT`, `lokasi_id`, `PODTVL`, `POTIME`, `POUSER`, `OPDESC`, `created_by`, `created_at`) VALUES
 (17, 'JAKARTA', 'EKO PAMBUDI', '0034535', '110', '03479534', 'PERBAIKAN', '20220608', '72000.0000000000000000', '1', 1, '20220608', '102404', 'ADM011', 'MUHAMMAD ILHAM KUSUMA', 2, '2021-09-08 07:02:03'),
-(18, 'SOLO', 'CV. ABADI NUGRAHA', '3893548', '230', '29493592', 'PENAMBAHAN KABEL JAR', '12000000', '579000.0000000000000000', '1', 1, '20220608', '093212', 'ADM350', 'IIN INAYAH', 2, '2021-09-23 03:41:23');
+(18, 'SOLO', 'CV. ABADI NUGRAHA', '3893548', '230', '29493592', 'PENAMBAHAN KABEL JAR', '12000000', '579000.0000000000000000', '1', 1, '20220608', '093212', 'ADM350', 'IIN INAYAH', 2, '2021-09-23 03:41:23'),
+(19, NULL, NULL, '123123', '123123', '123123', 'berita', NULL, '1200', NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-07-03 03:06:59');
 
 -- --------------------------------------------------------
 
@@ -234,18 +235,22 @@ CREATE TABLE `users` (
   `nama_lengkap` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `no_hp` varchar(12) DEFAULT NULL,
-  `alamat` varchar(100) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
   `nip` varchar(150) DEFAULT NULL,
-  `level` enum('admin','user') DEFAULT NULL
+  `level` enum('admin','user') DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `alamat`, `nip`, `level`) VALUES
-(1, 'eka', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'EKA PRASETYO', 'eka@gmail.com', '08738478234', 'jl. raya pandeglang banten', '284278342', 'user'),
-(2, 'admin', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'admin', 'admin@gmail.com', '085723853284', 'Subang', '10104019', 'admin');
+INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `alamat`, `nip`, `level`, `updated_at`, `created_at`) VALUES
+(1, 'eka', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'EKA PRASETYO', 'eka@gmail.com', '08738478234', 'jl. raya pandeglang banten', '284278342', 'admin', '2022-07-03 08:22:24', NULL),
+(2, 'admin', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'admin', 'admin@gmail.com', '085723853284', 'Subang', '10104019', 'admin', '2022-07-03 07:06:36', NULL),
+(4, 'bagassetia', '$2y$10$WVPJaLibUfAeVKfcrCE1YeV/cBn3y2PgTjhlAzjmo4Xam7RG67sbC', 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '085723853284', 'subang', '10104019', 'user', '2022-07-03 01:32:38', '2022-07-03 01:24:08'),
+(5, 'devi', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'Devi Ratna Daniati', 'devi@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-03 08:25:55', '2022-07-03 01:25:19');
 
 -- --------------------------------------------------------
 
@@ -254,7 +259,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_
 --
 DROP TABLE IF EXISTS `rekap`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `rekap`  AS SELECT `penawaran`.`BRNAME` AS `BRNAME`, `penawaran`.`RENAME` AS `RENAME`, `penawaran`.`POREFN` AS `POREFN`, `penawaran`.`POTRCO` AS `POTRCO`, `penawaran`.`PORECO` AS `PORECO`, `penawaran`.`PODESC` AS `PODESC`, `penawaran`.`PODTPO` AS `PODTPO`, `penawaran`.`NOMINAL` AS `NOMINAL`, `penawaran`.`POSTAT` AS `POSTAT`, `lokasi`.`nama` AS `nama_lokasi`, `lokasi`.`alamat` AS `alamat_lokasi`, `lokasi`.`nama_pimpinan` AS `nama_pimpinan`, `penawaran`.`PODTVL` AS `PODTVL1`, '' AS `PODTVL2`, '' AS `PODTVL3`, `penawaran`.`POTIME` AS `POTIME`, `users`.`nama_lengkap` AS `nama_user`, `penawaran`.`created_at` AS `created_at`, 'penawaran' AS `jenis`, `penawaran`.`POUSER` AS `POUSER`, `penawaran`.`OPDESC` AS `OPDESC`, `lokasi`.`id` AS `id_lokasi` FROM ((`penawaran` left join `lokasi` on(`penawaran`.`lokasi_id` = `lokasi`.`id`)) left join `users` on(`penawaran`.`created_by` = `users`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rekap`  AS SELECT `penawaran`.`BRNAME` AS `BRNAME`, `penawaran`.`RENAME` AS `RENAME`, `penawaran`.`POREFN` AS `POREFN`, `penawaran`.`POTRCO` AS `POTRCO`, `penawaran`.`PORECO` AS `PORECO`, `penawaran`.`PODESC` AS `PODESC`, `penawaran`.`PODTPO` AS `PODTPO`, `penawaran`.`NOMINAL` AS `NOMINAL`, `penawaran`.`POSTAT` AS `POSTAT`, `lokasi`.`nama` AS `nama_lokasi`, `lokasi`.`alamat` AS `alamat_lokasi`, `lokasi`.`nama_pimpinan` AS `nama_pimpinan`, `penawaran`.`PODTVL` AS `PODTVL1`, '' AS `PODTVL2`, '' AS `PODTVL3`, `penawaran`.`POTIME` AS `POTIME`, `users`.`nama_lengkap` AS `nama_user`, `penawaran`.`created_at` AS `created_at`, 'penawaran' AS `jenis`, `penawaran`.`POUSER` AS `POUSER`, `penawaran`.`OPDESC` AS `OPDESC`, `lokasi`.`id` AS `id_lokasi` FROM ((`penawaran` left join `lokasi` on(`penawaran`.`lokasi_id` = `lokasi`.`id`)) left join `users` on(`penawaran`.`created_by` = `users`.`id`)) ;
 
 --
 -- Indexes for dumped tables
@@ -316,7 +321,7 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `prm_master_area`
@@ -346,7 +351,7 @@ ALTER TABLE `uang_muka`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

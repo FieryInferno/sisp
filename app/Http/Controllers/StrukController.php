@@ -17,7 +17,7 @@ class StrukController extends Controller
     $struk        = DB::table('rekap');
     
     if ($tanggal_awal && $tanggal_akhir) {
-      $struk  = $struk->whereBetween('created_at', [$tanggal_awal, $tanggal_akhir]);
+      $struk  = $struk->whereBetween('created_at', [$tanggal_awal . ' 00:00:00', $tanggal_akhir . ' 23:59:59']);
     }
     
     if ($cabang) {

@@ -20,6 +20,19 @@
   <link rel="stylesheet" href="{{ asset('plugins') }}/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="{{ asset('plugins') }}/select2/css/select2.min.css">
+  <style>
+    .watermark-image {
+      content: "";
+      background:url({{ asset('images/watermark.jpeg') }});
+      opacity: 0.1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      margin-top: 20%;
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
