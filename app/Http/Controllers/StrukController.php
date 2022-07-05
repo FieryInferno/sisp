@@ -18,6 +18,7 @@ class StrukController extends Controller
     $tanggal_akhir = $request->query('tanggal_akhir');
     $cabang       = $request->query('cabang');
     $struk        = DB::table('rekap');
+    $type         = $request->query('type');
     
     if ($tanggal_awal && $tanggal_akhir) {
       $struk  = $struk->whereBetween('created_at', [$tanggal_awal . ' 00:00:00', $tanggal_akhir . ' 23:59:59']);
@@ -25,6 +26,23 @@ class StrukController extends Controller
     
     if ($cabang) {
       $struk  = $struk->where('id_lokasi', '=', $cabang);
+    }
+
+    if ($type) {
+      switch ($type) {
+        case 'pdf':
+          $pdf = PDF::loadview('struk.excel', [
+            'struk'     => $struk->orderBy('created_at', 'desc')->get(),
+            'terbesar'  => $struk->max('NOMINAL'),
+            'terkecil'  => $struk->min('NOMINAL'),
+          ]);
+          return $pdf->stream('rekap');
+          break;
+  
+        case 'excel':
+          return Excel::download(new RekapExport($struk), 'rekap.xlsx');
+          break;
+      }
     }
 
     return view('struk.index', [

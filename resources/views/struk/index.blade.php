@@ -39,13 +39,13 @@
                     </select>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" value="excel" name="type">Excel</button>
+                  <button type="submit" class="btn btn-primary" value="pdf" name="type">PDF</button>
                 </form>
                 <hr>
                 <form action="{{ url('struk') }}" method="post">
                   @csrf
                   <button type="submit" class="btn btn-primary">Struk</button>
-                  <a href="{{ url('struk/excel') }}" class="btn btn-primary">Excel</a>
-                  <a href="{{ url('struk/pdf') }}" class="btn btn-primary">PDF</a>
                   <br>
                   <br>
                   <table id="example1" class="table table-bordered table-striped">

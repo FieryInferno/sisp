@@ -8,7 +8,20 @@
           <div class="alert alert-info">
             <div class="row d-flex justify-content-center">
               <div>
-                <h3>Good morning {{ auth()->user()->name }}</h3>
+                <h3>
+                  @if (date('h') >= 1 && date('h') <= 4)
+                    Selamat Malam
+                  @elseif (date('h') >= 5 && date('h') <= 11)
+                    Selamat Pagi
+                  @elseif (date('h') > 11 && date('h') <= 15)
+                    Selamat Siang
+                  @elseif (date('h') > 15 && date('h') <= 17)
+                    Selamat Sore
+                  @else
+                    Selamat Malam
+                  @endif
+                  {{ auth()->user()->name }}
+                </h3>
               </div>
             </div>
             <div class="row d-flex justify-content-center">

@@ -9,12 +9,18 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
 class RekapExport implements FromView, ShouldAutoSize
 {
+  protected $struk;
+
+  public function __construct($struk)
+  {
+      $this->struk = $struk;
+  }
   public function view(): View
   {
     return view('struk.excel', [
-      'struk'     => DB::table('rekap')->get(),
-      'terbesar'  => DB::table('rekap')->max('NOMINAL'),
-      'terkecil'  => DB::table('rekap')->min('NOMINAL'),
+      'struk'     => $this->struk->get(),
+      'terbesar'  => $this->struk->max('NOMINAL'),
+      'terkecil'  => $this->struk->min('NOMINAL'),
     ]);
   }
 }
