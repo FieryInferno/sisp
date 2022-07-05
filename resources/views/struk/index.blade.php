@@ -45,6 +45,7 @@
                   @csrf
                   <button type="submit" class="btn btn-primary">Struk</button>
                   <a href="{{ url('struk/excel') }}" class="btn btn-primary">Excel</a>
+                  <a href="{{ url('struk/pdf') }}" class="btn btn-primary">PDF</a>
                   <br>
                   <br>
                   <table id="example1" class="table table-bordered table-striped">

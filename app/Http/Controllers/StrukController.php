@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Exports\RekapExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class StrukController extends Controller
 {
@@ -72,5 +73,15 @@ class StrukController extends Controller
   public function excel()
   {
     return Excel::download(new RekapExport, 'rekap.xlsx');
+  }
+
+  public function pdf()
+  {
+    $pdf = PDF::loadview('struk.excel', [
+      'struk'     => DB::table('rekap')->get(),
+      'terbesar'  => DB::table('rekap')->max('NOMINAL'),
+      'terkecil'  => DB::table('rekap')->min('NOMINAL'),
+    ]);
+    return $pdf->stream('rekap');
   }
 }

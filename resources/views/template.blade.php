@@ -194,7 +194,7 @@
       inline: true
     })
 
-    $("#example1").DataTable({"buttons": ["copy", "csv", "pdf", "print", "colvis"]}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $("#example1").DataTable({"buttons": ["copy", "csv", "print", "colvis"]}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
     $("#example2").DataTable()
   });
