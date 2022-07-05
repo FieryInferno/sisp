@@ -23,7 +23,7 @@
   <style>
     .watermark-image {
       content: "";
-      background:url({{ asset('images/watermark.jpeg') }});
+      background:url("{{ asset('images/watermark.jpeg') }}");
       opacity: 0.1;
       top: 0;
       left: 0;
@@ -194,7 +194,7 @@
       inline: true
     })
 
-    $("#example1").DataTable({"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $("#example1").DataTable({"buttons": ["copy", "csv", "pdf", "print", "colvis"]}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
     $("#example2").DataTable()
   });

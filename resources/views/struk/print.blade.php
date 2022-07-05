@@ -9,6 +9,19 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist') }}/css/adminlte.min.css">
+  <style>
+    .watermark-image {
+      content: "";
+      background:url("{{ asset('images/watermark.jpeg') }}");
+      opacity: 0.1;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      margin-top: 20%;
+    }
+  </style>
 </head>
 <body>
   @foreach ($struk as $key)
@@ -19,6 +32,7 @@
           <div class="card">
             <div class="card-body">
               <img src="{{ asset('images') }}/kop.PNG" alt="" style="width: 100%;">
+              <div class="watermark-image"></div>
               <div class="d-flex justify-content-center mb-5">
                 <h3><strong>Nomor Ref {{ $key->POREFN }}</strong></h3>
               </div>

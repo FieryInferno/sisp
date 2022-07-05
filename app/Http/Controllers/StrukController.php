@@ -6,6 +6,8 @@ use App\Models\Struk;
 use App\Models\Rekap;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Exports\RekapExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class StrukController extends Controller
 {
@@ -25,7 +27,7 @@ class StrukController extends Controller
     }
 
     return view('struk.index', [
-      'struk'   => $struk->get(),
+      'struk'   => $struk->orderBy('created_at', 'desc')->get(),
       'title'   => 'Struk',
       'active'  => 'struk',
       'cabang'  => DB::table('lokasi')->get(),
@@ -65,5 +67,10 @@ class StrukController extends Controller
   public function print(Request $request)
   {
     return view('struk.print', ['struk' => $request->struk]);
+  }
+
+  public function excel()
+  {
+    return Excel::download(new RekapExport, 'rekap.xlsx');
   }
 }

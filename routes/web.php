@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
   Route::post('/struk', [App\Http\Controllers\StrukController::class, 'print']);
   Route::get('/struk/create', [App\Http\Controllers\StrukController::class, 'create']);
   Route::post('/struk/store', [App\Http\Controllers\StrukController::class, 'store']);
+  Route::get('/struk/excel', [App\Http\Controllers\StrukController::class, 'excel']);
   Route::get('/struk/{rekap}', [App\Http\Controllers\StrukController::class, 'show']);
   Route::resource('user', App\Http\Controllers\UserController::class);
 });
