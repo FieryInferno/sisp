@@ -9,13 +9,13 @@
             <div class="row d-flex justify-content-center">
               <div>
                 <h3>
-                  @if (date('h') >= 1 && date('h') <= 4)
+                  @if ((date('h') + 7) >= 1 && (date('h') + 7) <= 4)
                     Selamat Malam
-                  @elseif (date('h') >= 5 && date('h') <= 11)
+                  @elseif ((date('h') + 7) >= 5 && (date('h') + 7) <= 11)
                     Selamat Pagi
-                  @elseif (date('h') > 11 && date('h') <= 15)
+                  @elseif ((date('h') + 7) > 11 && (date('h') + 7) <= 15)
                     Selamat Siang
-                  @elseif (date('h') > 15 && date('h') <= 17)
+                  @elseif ((date('h') + 7) > 15 && (date('h') + 7) <= 17)
                     Selamat Sore
                   @else
                     Selamat Malam

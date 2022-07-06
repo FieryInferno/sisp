@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2022 at 01:57 PM
+-- Generation Time: Jul 06, 2022 at 03:54 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -63,7 +63,7 @@ CREATE TABLE `penawaran` (
   `PORECO` varchar(200) DEFAULT NULL,
   `PODESC` varchar(20) DEFAULT NULL,
   `PODTPO` varchar(100) DEFAULT NULL,
-  `NOMINAL` varchar(100) DEFAULT NULL,
+  `NOMINAL` int(100) DEFAULT NULL,
   `POSTAT` varchar(50) DEFAULT NULL,
   `lokasi_id` int(1) DEFAULT NULL,
   `PODTVL` varchar(200) DEFAULT NULL,
@@ -79,9 +79,9 @@ CREATE TABLE `penawaran` (
 --
 
 INSERT INTO `penawaran` (`id`, `BRNAME`, `RENAME`, `POREFN`, `POTRCO`, `PORECO`, `PODESC`, `PODTPO`, `NOMINAL`, `POSTAT`, `lokasi_id`, `PODTVL`, `POTIME`, `POUSER`, `OPDESC`, `created_by`, `created_at`) VALUES
-(17, 'JAKARTA', 'EKO PAMBUDI', '0034535', '110', '03479534', 'PERBAIKAN', '20220608', '72000.0000000000000000', '1', 1, '20220608', '102404', 'ADM011', 'MUHAMMAD ILHAM KUSUMA', 2, '2021-09-08 07:02:03'),
-(18, 'SOLO', 'CV. ABADI NUGRAHA', '3893548', '230', '29493592', 'PENAMBAHAN KABEL JAR', '12000000', '579000.0000000000000000', '1', 1, '20220608', '093212', 'ADM350', 'IIN INAYAH', 2, '2021-09-23 03:41:23'),
-(19, NULL, NULL, '123123', '123123', '123123', 'berita', NULL, '1200', NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-07-03 03:06:59');
+(17, 'JAKARTA', 'EKO PAMBUDI', '0034535', '110', '03479534', 'PERBAIKAN', '20220608', 72000, '1', 1, '20220608', '102404', 'ADM011', 'MUHAMMAD ILHAM KUSUMA', 2, '2021-09-08 07:02:03'),
+(18, 'SOLO', 'CV. ABADI NUGRAHA', '3893548', '230', '29493592', 'PENAMBAHAN KABEL JAR', '12000000', 579000, '1', 1, '20220608', '093212', 'ADM350', 'IIN INAYAH', 2, '2021-09-23 03:41:23'),
+(19, NULL, NULL, '123123', '123123', '123123', 'berita', NULL, 1200, NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-07-03 03:06:59');
 
 -- --------------------------------------------------------
 
@@ -167,7 +167,7 @@ CREATE TABLE `rekap` (
 ,`PORECO` varchar(200)
 ,`PODESC` varchar(20)
 ,`PODTPO` varchar(100)
-,`NOMINAL` varchar(100)
+,`NOMINAL` int(100)
 ,`POSTAT` varchar(50)
 ,`nama_lokasi` varchar(50)
 ,`alamat_lokasi` varchar(200)
@@ -199,7 +199,7 @@ CREATE TABLE `uang_muka` (
   `PORECO` varchar(200) DEFAULT NULL,
   `PODESC` varchar(20) DEFAULT NULL,
   `PODTPO` varchar(100) DEFAULT NULL,
-  `NOMINAL` varchar(100) DEFAULT NULL,
+  `NOMINAL` int(100) DEFAULT NULL,
   `POSTAT` varchar(50) DEFAULT NULL,
   `lokasi_id` int(1) DEFAULT NULL,
   `PODTVL1` varchar(200) DEFAULT NULL,
@@ -217,10 +217,10 @@ CREATE TABLE `uang_muka` (
 --
 
 INSERT INTO `uang_muka` (`id`, `BRNAME`, `RENAME`, `POREFN`, `POTRCO`, `PORECO`, `PODESC`, `PODTPO`, `NOMINAL`, `POSTAT`, `lokasi_id`, `PODTVL1`, `PODTVL2`, `PODTVL3`, `POTIME`, `POUSER`, `OPDESC`, `created_by`, `created_at`) VALUES
-(10, 'MALANG', 'MUHAMMAD FATTAH', '24837242', '2300', '035394538', 'PASANG BARU', '24782374', '27000.0000000000000000', '3', 1, '20220606', '20220606', '20220606', '110411', 'ADM001', 'IIM IBRAHIM', 2, '2021-09-08 07:01:41'),
-(11, 'BANDUNG', 'PT. ABADI CIPTA', '2398432', '2300', '394839348', 'TAMBAH ROUTER', '12000000', '349000.0000000000000000', '8', 1, '20220606', '20220606', '20220606', '104943', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-08 07:09:05'),
-(12, 'BANDUNG', 'FIRMAN', '3842356', '2300', '5948587334', 'TAMBAH ROUTER', '348343', '84500.0000000000000000', '5', 1, '20220606', '20220606', '20220606', '092323', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-08 07:12:34'),
-(13, 'BANDUNG', 'SAMLAWI', '34589476', '2300', '468543434', 'TAMBAH ROUTER', '08900083', '84500.0000000000000000', '8', 1, '20220606', '20220606', '20220606', '091215', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-23 06:16:35');
+(10, 'MALANG', 'MUHAMMAD FATTAH', '24837242', '2300', '035394538', 'PASANG BARU', '24782374', 27000, '3', 1, '20220606', '20220606', '20220606', '110411', 'ADM001', 'IIM IBRAHIM', 2, '2021-09-08 07:01:41'),
+(11, 'BANDUNG', 'PT. ABADI CIPTA', '2398432', '2300', '394839348', 'TAMBAH ROUTER', '12000000', 349000, '8', 1, '20220606', '20220606', '20220606', '104943', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-08 07:09:05'),
+(12, 'BANDUNG', 'FIRMAN', '3842356', '2300', '5948587334', 'TAMBAH ROUTER', '348343', 84500, '5', 1, '20220606', '20220606', '20220606', '092323', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-08 07:12:34'),
+(13, 'BANDUNG', 'SAMLAWI', '34589476', '2300', '468543434', 'TAMBAH ROUTER', '08900083', 84500, '8', 1, '20220606', '20220606', '20220606', '091215', 'ADM324', 'AGUNG SETIABUDI', 2, '2021-09-23 06:16:35');
 
 -- --------------------------------------------------------
 
@@ -250,7 +250,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_
 (1, 'eka', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'EKA PRASETYO', 'eka@gmail.com', '08738478234', 'jl. raya pandeglang banten', '284278342', 'admin', '2022-07-03 08:22:24', NULL),
 (2, 'admin', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'admin', 'admin@gmail.com', '085723853284', 'Subang', '10104019', 'admin', '2022-07-03 07:06:36', NULL),
 (4, 'bagassetia', '$2y$10$WVPJaLibUfAeVKfcrCE1YeV/cBn3y2PgTjhlAzjmo4Xam7RG67sbC', 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '085723853284', 'subang', '10104019', 'user', '2022-07-03 01:32:38', '2022-07-03 01:24:08'),
-(5, 'devi', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'Devi Ratna Daniati', 'devi@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-03 08:25:55', '2022-07-03 01:25:19');
+(5, 'devi', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'Devi Ratna Daniati', 'devi@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-03 08:25:55', '2022-07-03 01:25:19'),
+(8, 'user', '$2y$10$/42MdbWFK.Pr7bgYsylizeLbdzyDEubv7cZcmHff7gsiqIgm4JomS', 'user', 'user@gmail.com', '08777', 'Bandung', '123456', 'user', '2022-07-03 19:35:10', '2022-07-03 19:35:10');
 
 -- --------------------------------------------------------
 
@@ -351,7 +352,7 @@ ALTER TABLE `uang_muka`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
