@@ -50,6 +50,9 @@ class StrukController extends Controller
       'title'   => 'Struk',
       'active'  => 'struk',
       'cabang'  => DB::table('lokasi')->get(),
+      'tanggalAwal'   => $tanggal_awal,
+      'tanggalAkhir'  => $tanggal_awal,
+      'valueCabang'   => $cabang,
     ]);
   }
   
