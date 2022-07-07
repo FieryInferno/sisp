@@ -26,7 +26,7 @@
 <body>
   @foreach ($struk as $key)
     <?php $key  = json_decode($key); ?>
-    <div class="container-fluid" style="break-after: page;">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
@@ -93,12 +93,6 @@
                   </td>
                 </tr>
               </table>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
               <br>
               <br>
               <br>

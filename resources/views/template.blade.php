@@ -201,6 +201,10 @@
 
   //Initialize Select2 Elements
   $('.select2').select2({'placeholder': 'Pilih'})
+
+  const checkAll = (data) => {
+    $('.checkStruk').prop('checked', data.checked);
+  }
 </script>
 </body>
 </html>

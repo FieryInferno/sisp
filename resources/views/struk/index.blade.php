@@ -45,6 +45,13 @@
                 <hr>
                 <form action="{{ url('struk') }}" method="post">
                   @csrf
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onclick="checkAll(this)">
+                    <label class="form-check-label" for="defaultCheck1">
+                      Pilih semua
+                    </label>
+                  </div>
+                  <br>
                   <button type="submit" class="btn btn-primary">Struk</button>
                   <br>
                   <br>
@@ -66,7 +73,7 @@
                           <td>
                             <div class="form-check">
                               <input
-                                class="form-check-input"
+                                class="form-check-input checkStruk"
                                 type="checkbox"
                                 name="struk[]"
                                 value="{{ json_encode($key) }}"
@@ -78,7 +85,104 @@
                           <td>{{ $key->nama_lokasi }}</td>
                           <td>{{ $key->PODESC }}</td>
                           <td>
-                            <a class="btn btn-primary" href="{{ url('struk/' . $key->POREFN) }}">Detail</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $key->POREFN }}">
+                              Detail
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal{{ $key->POREFN }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Detail Struk</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <img src="{{ asset('images') }}/kop.PNG" alt="" style="width: 100%;">
+                                    <div class="watermark-image"></div>
+                                    <div class="d-flex justify-content-center mb-5">
+                                      <h3><strong>Nomor Ref {{ $key->POREFN }}</strong></h3>
+                                    </div>
+                                    <table width="100%">
+                                      <tr>
+                                        <td>Kode</td>
+                                        <td>:</td>
+                                        <td>{{ $key->POTRCO }}</td>
+                                        <td>Cab</td>
+                                        <td>:</td>
+                                        <td>{{ $key->nama_lokasi }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Rek</td>
+                                        <td>:</td>
+                                        <td>{{ $key->PORECO }}</td>
+                                        <td>Tgl.</td>
+                                        <td>:</td>
+                                        <td>{{ substr($key->created_at, 0, 10) }}</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Berita</td>
+                                        <td>:</td>
+                                        <td>{{ $key->PODESC }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Nominal</td>
+                                        <td>:</td>
+                                        <td>{{ formatRupiah(round($key->NOMINAL, 0)) }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td>Terbilang</td>
+                                        <td>:</td>
+                                        <td>{{ terbilang((int) round($key->NOMINAL, 0)) }} rupiah</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                      </tr>
+                                      <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td colspan="3">
+                                          <div>
+                                            {!! QrCode::size(125)->generate(
+                                              'nominal: ' . formatRupiah(round($key->NOMINAL, 0)) .
+                                              ',cabang: ' . $key->nama_lokasi .
+                                              ',tanggal: ' . substr($key->created_at, 0, 10) .
+                                              ',berita: ' . $key->PODESC
+                                            ); !!}
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <h2 class="d-flex justify-content-center">
+                                      <strong>Terima Kasih</strong>  
+                                    </h2>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </td>
                         </tr>
                       @endforeach
