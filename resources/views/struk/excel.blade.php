@@ -26,7 +26,7 @@
         <?php $totalNominal += $key->NOMINAL; ?>
         <tr>
           <td>{{ $no++ }}</td>
-          <td>{{ $key->created_at }}</td>
+          <td>{{ $key->PODTPO }}</td>
           <td>{{ $key->POREFN }}</td>
           <td>{{ $key->nama_lokasi }}</td>
           <td>{{ $key->PODESC }}</td>

@@ -27,7 +27,7 @@
                   <td>{{ $PORECO }}</td>
                   <td>Tgl.</td>
                   <td>:</td>
-                  <td>{{ substr($created_at, 0, 10) }}</td>
+                  <td>{{ substr($PODTPO, 0, 10) }}</td>
                 </tr>
                 <tr>
                   <td>Berita</td>
@@ -62,7 +62,7 @@
                       {!! QrCode::size(125)->generate(
                         'nominal: ' . formatRupiah(round($NOMINAL, 0)) .
                         ',cabang: ' . $nama_lokasi .
-                        ',tanggal: ' . substr($created_at, 0, 10) .
+                        ',tanggal: ' . substr($PODTPO, 0, 10) .
                         ',berita: ' . $PODESC
                       ); !!}
                     </div>

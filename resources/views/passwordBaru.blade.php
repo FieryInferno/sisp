@@ -22,9 +22,9 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Masukan Password Baru</p>
 
-      <form action="{{ url('login') }}" method="post">
+      <form action="{{ url('password_baru') }}" method="post">
         @csrf
         @if ($errors->any())
           <div class="alert alert-danger">
@@ -35,19 +35,7 @@
             </ul>
           </div>
         @endif
-        @if (session('success'))
-          <div class="alert alert-success">
-            {{ session('success') }}
-          </div>
-        @endif
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" name="username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
+        <input type="hidden" value="{{ $email }}" name="email">
         <div class="input-group mb-3">
           <input type="password" class="form-control" placeholder="Password" name="password">
           <div class="input-group-append">
@@ -59,15 +47,11 @@
         <div class="row d-flex justify-content-center">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-
-      <p class="mb-1">
-        <a href="{{ url('lupa_password') }}">Lupa password</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
@@ -82,3 +66,4 @@
 <script src="{{ asset('dist') }}/js/adminlte.min.js"></script>
 </body>
 </html>
+

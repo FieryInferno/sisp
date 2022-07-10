@@ -21,7 +21,7 @@ class StrukController extends Controller
     $type         = $request->query('type');
     
     if ($tanggal_awal && $tanggal_akhir) {
-      $struk  = $struk->whereBetween('created_at', [$tanggal_awal . ' 00:00:00', $tanggal_akhir . ' 23:59:59']);
+      $struk  = $struk->whereBetween('PODTPO', [$tanggal_awal . ' 00:00:00', $tanggal_akhir . ' 23:59:59']);
     }
     
     if ($cabang) {
@@ -32,7 +32,7 @@ class StrukController extends Controller
       switch ($type) {
         case 'pdf':
           $pdf = PDF::loadview('struk.excel', [
-            'struk'     => $struk->orderBy('created_at', 'desc')->get(),
+            'struk'     => $struk->orderBy('PODTPO', 'desc')->get(),
             'terbesar'  => $struk->max('NOMINAL'),
             'terkecil'  => $struk->min('NOMINAL'),
           ]);
@@ -46,7 +46,7 @@ class StrukController extends Controller
     }
 
     return view('struk.index', [
-      'struk'   => $struk->orderBy('created_at', 'desc')->get(),
+      'struk'   => $struk->orderBy('PODTPO', 'desc')->get(),
       'title'   => 'Struk',
       'active'  => 'struk',
       'cabang'  => DB::table('lokasi')->get(),

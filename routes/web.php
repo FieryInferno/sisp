@@ -18,6 +18,10 @@ Route::get('/', function () {
 })->name('login')->middleware('guest');
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'index']);
 Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout']);
+Route::get('/lupa_password', [App\Http\Controllers\LoginController::class, 'lupaPassword']);
+Route::post('/lupa_password', [App\Http\Controllers\LoginController::class, 'sendEmail']);
+Route::get('/password_baru', [App\Http\Controllers\LoginController::class, 'passwordBaru']);
+Route::post('/password_baru', [App\Http\Controllers\LoginController::class, 'changePassword']);
 
 Route::middleware('auth')->group(function () {
   Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
