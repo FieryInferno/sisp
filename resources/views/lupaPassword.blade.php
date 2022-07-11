@@ -35,6 +35,11 @@
             </ul>
           </div>
         @endif
+        @if (session('failed'))
+          <div class="alert alert-danger">
+            {{ session('failed') }}
+          </div>
+        @endif
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
