@@ -32,5 +32,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/struk/excel', [App\Http\Controllers\StrukController::class, 'excel']);
   Route::get('/struk/pdf', [App\Http\Controllers\StrukController::class, 'pdf']);
   Route::get('/struk/{rekap}', [App\Http\Controllers\StrukController::class, 'show']);
+  Route::get('/ganti_password', [App\Http\Controllers\LoginController::class, 'gantiPassword']);
+  Route::post('/ganti_password', [App\Http\Controllers\LoginController::class, 'gantiPasswordProses']);
   Route::resource('user', App\Http\Controllers\UserController::class);
 });

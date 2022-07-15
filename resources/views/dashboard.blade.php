@@ -30,6 +30,9 @@
               </div>
             </div>
           </div>
+          @if (((strtotime('now') + 25200) - strtotime(auth()->user()->update_password)) >= 86400)
+            <div class="alert alert-danger">Ganti password <a href="{{ url('ganti_password') }}">disini</a></div>
+          @endif
         </div>
       </div>
       <div class="row">

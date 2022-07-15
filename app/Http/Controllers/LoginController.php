@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Mail; 
 use App\Mail\ForgotPasswordEmail;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+use DateTimeZone;
 
 class LoginController extends Controller
 {
@@ -64,6 +66,28 @@ class LoginController extends Controller
     DB::table('users')
       ->where('email', $request->email)
       ->update(['password' => password_hash($request->password, PASSWORD_DEFAULT)]);
+
+    return redirect('/')->with('success', 'Berhasil ganti password');
+  }
+
+  public function gantiPassword()
+  {
+    return view('gantiPassword', [
+      'title'   => 'Ganti Password',
+      'active'  => 'ganti_password',
+    ]);
+  }
+
+  public function gantiPasswordProses(Request $request)
+  {
+    $request->validate(['password' => ['required']]);
+
+    DB::table('users')
+      ->where('id', $request->id)
+      ->update([
+        'password'        => password_hash($request->password, PASSWORD_DEFAULT),
+        'update_password' => date('Y-m-d h:i:s', time() + 25200),
+      ]);
 
     return redirect('/')->with('success', 'Berhasil ganti password');
   }
