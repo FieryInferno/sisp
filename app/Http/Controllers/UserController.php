@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
   public function index()
   {
+    $user = User::all();
+
+    for ($i=0; $i < count($user); $i++) {
+      $user[$i]->lokasi = DB::table('lokasi')->where('id', '=', $user[$i]->id_lokasi)->first();
+    }
+    
     return view('user.index', [
       'title'   => 'User',
       'active'  => 'user',
-      'user'    => User::all(),
+      'user'    => $user,
     ]);
   }
 
@@ -22,6 +29,7 @@ class UserController extends Controller
       'title'   => 'User',
       'active'  => 'user',
       'mode'    => 'add',
+      'lokasi'  => DB::table('lokasi')->get(),
     ]);
   }
 
@@ -36,6 +44,7 @@ class UserController extends Controller
       'email'         => 'required',
       'no_hp'         => 'required',
       'alamat'        => 'required',
+      'id_lokasi'     => 'required',
     ]);
 
     $data             = $request->all();
@@ -51,6 +60,7 @@ class UserController extends Controller
     $user['title']  = 'User';
     $user['active'] = 'user';
     $user['mode']   = 'edit';
+    $user['lokasi'] = DB::table('lokasi')->get();
 
     return view('user.form', $user);
   }

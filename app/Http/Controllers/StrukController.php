@@ -28,6 +28,10 @@ class StrukController extends Controller
       $struk  = $struk->where('id_lokasi', '=', $cabang);
     }
 
+    if (auth()->user()->id_lokasi !== 'semua') {
+      $struk->where('id_lokasi', '=', auth()->user()->id_lokasi);
+    }
+
     if ($type) {
       switch ($type) {
         case 'pdf':

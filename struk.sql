@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2022 at 09:53 AM
+-- Generation Time: Jul 16, 2022 at 11:04 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -239,19 +239,22 @@ CREATE TABLE `users` (
   `nip` varchar(150) DEFAULT NULL,
   `level` enum('admin','user') DEFAULT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `created_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_password` datetime NOT NULL DEFAULT current_timestamp(),
+  `id_lokasi` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `alamat`, `nip`, `level`, `updated_at`, `created_at`) VALUES
-(1, 'eka', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'EKA PRASETYO', 'eka@gmail.com', '08738478234', 'jl. raya pandeglang banten', '284278342', 'admin', '2022-07-03 08:22:24', NULL),
-(2, 'admin', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'admin', 'admin@gmail.com', '085723853284', 'Subang', '10104019', 'admin', '2022-07-03 07:06:36', NULL),
-(4, 'bagassetia', '$2y$10$WVPJaLibUfAeVKfcrCE1YeV/cBn3y2PgTjhlAzjmo4Xam7RG67sbC', 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '085723853284', 'subang', '10104019', 'user', '2022-07-03 01:32:38', '2022-07-03 01:24:08'),
-(5, 'devi', '$2y$10$CBqY4Ptyv23d72osk4mfJO0E5fYezG6pRKSysXht0GeI7BS4lQvqa', 'Devi Ratna Daniati', 'fieryinferno33@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-11 07:52:49', '2022-07-03 01:25:19'),
-(8, 'user', '$2y$10$/42MdbWFK.Pr7bgYsylizeLbdzyDEubv7cZcmHff7gsiqIgm4JomS', 'user', 'user@gmail.com', '08777', 'Bandung', '123456', 'user', '2022-07-03 19:35:10', '2022-07-03 19:35:10');
+INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_hp`, `alamat`, `nip`, `level`, `updated_at`, `created_at`, `update_password`, `id_lokasi`) VALUES
+(1, 'eka', NULL, 'EKA PRASETYO', 'eka@gmail.com', '08738478234', 'jl. raya pandeglang banten', '284278342', 'admin', '2022-07-15 20:16:09', NULL, '2022-07-15 19:31:54', '3'),
+(2, 'admin', '$2y$10$CA5l7DFWNFlwynzUC3lTKuXaIjsRi3o9VgkBnYEYhgZVV2tSe1duK', 'admin', 'admin@gmail.com', '085723853284', 'Subang', '10104019', 'admin', '2022-07-15 20:16:22', NULL, '2022-07-15 10:19:41', 'semua'),
+(4, 'bagassetia', NULL, 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '085723853284', 'subang', '10104019', 'user', '2022-07-16 02:04:14', '2022-07-03 01:24:08', '2022-07-15 19:31:54', '1'),
+(5, 'devi', NULL, 'Devi Ratna Daniati', 'fieryinferno33@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-16 02:04:01', '2022-07-03 01:25:19', '2022-07-15 19:31:54', '3'),
+(8, 'user', NULL, 'user', 'user@gmail.com', '08777', 'Bandung', '123456', 'user', '2022-07-16 02:03:52', '2022-07-03 19:35:10', '2022-07-15 19:31:54', '2'),
+(9, 'primajasa', '$2y$10$AXRSWISdqWNEMNGkCc0LU.29STz3nuFUmM/H66sr56mwrg3LruFmq', 'primajasa', 'primajasa@gmail.com', '085723853284', 'leuwipanjang', '10104019', 'user', '2022-07-15 19:48:57', '2022-07-15 19:48:57', '2022-07-16 09:48:57', '1');
 
 -- --------------------------------------------------------
 
@@ -352,7 +355,7 @@ ALTER TABLE `uang_muka`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

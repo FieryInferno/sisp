@@ -26,6 +26,7 @@
                       <th>No. Hp</th>
                       <th>Alamat</th>
                       <th>NIP</th>
+                      <th>Lokasi</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -40,6 +41,7 @@
                         <td>{{ $user->no_hp }}</td>
                         <td>{{ $user->alamat }}</td>
                         <td>{{ $user->nip }}</td>
+                        <td>{{ $user->lokasi ? $user->lokasi->nama : 'Semua Lokasi' }}</td>
                         <td>
                           <a href="{{ url('user/' . $user->id . '/edit') }}" class="btn btn-primary">Edit</a>
                           <!-- Button trigger modal -->

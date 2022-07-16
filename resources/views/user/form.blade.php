@@ -23,6 +23,16 @@
               {{ $mode === 'edit' ? method_field('PUT') : '' }}
               <div class="card-body">
                 <div class="form-group">
+                  <label>Lokasi</label>
+                  <select class="form-control select2" style="width: 100%;" name="id_lokasi">
+                    <option></option>
+                    <option value="semua" <?= $mode === 'edit' && $id_lokasi === 'semua' ? 'selected' : ''; ?>>Semua Lokasi</option>
+                    @foreach ($lokasi as $lokasi)
+                      <option value="{{ $lokasi->id }}" <?= $mode === 'edit' && $id_lokasi === $lokasi->id ? 'selected' : ''; ?>>{{ $lokasi->nama }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
                   <label>Level</label>
                   <select class="form-control select2" style="width: 100%;" name="level">
                     <option></option>
