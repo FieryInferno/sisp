@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2022 at 11:04 AM
+-- Generation Time: Jul 18, 2022 at 03:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -81,7 +81,8 @@ CREATE TABLE `penawaran` (
 INSERT INTO `penawaran` (`id`, `BRNAME`, `RENAME`, `POREFN`, `POTRCO`, `PORECO`, `PODESC`, `PODTPO`, `NOMINAL`, `POSTAT`, `lokasi_id`, `PODTVL`, `POTIME`, `POUSER`, `OPDESC`, `created_by`, `created_at`) VALUES
 (17, 'JAKARTA', 'EKO PAMBUDI', '0034535', '110', '03479534', 'PERBAIKAN', '2021-09-08 14:02:03', 72000, '1', 1, '20220608', '102404', 'ADM011', 'MUHAMMAD ILHAM KUSUMA', 2, '2021-09-08 07:02:03'),
 (18, 'SOLO', 'CV. ABADI NUGRAHA', '3893548', '230', '29493592', 'PENAMBAHAN KABEL JAR', '2021-09-23 10:41:23', 579000, '1', 1, '20220608', '093212', 'ADM350', 'IIN INAYAH', 2, '2021-09-23 03:41:23'),
-(19, NULL, NULL, '123123', '123123', '123123', 'berita', '2022-07-03 10:06:59', 1200, NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-07-03 03:06:59');
+(19, NULL, NULL, '123123', '123123', '123123', 'berita', '2022-07-03 10:06:59', 1200, NULL, 1, NULL, NULL, NULL, NULL, NULL, '2022-07-03 03:06:59'),
+(20, NULL, NULL, '123', '111', '1234567890', 'tes', NULL, 456789, NULL, 2, NULL, NULL, NULL, NULL, NULL, '2022-07-16 13:59:08');
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `nama_lengkap`, `email`, `no_
 (4, 'bagassetia', NULL, 'M. Bagas Setia Permana', 'bagassetia271@gmail.com', '085723853284', 'subang', '10104019', 'user', '2022-07-16 02:04:14', '2022-07-03 01:24:08', '2022-07-15 19:31:54', '1'),
 (5, 'devi', NULL, 'Devi Ratna Daniati', 'fieryinferno33@gmail.com', '085723853284', 'subang', '10104911', 'user', '2022-07-16 02:04:01', '2022-07-03 01:25:19', '2022-07-15 19:31:54', '3'),
 (8, 'user', NULL, 'user', 'user@gmail.com', '08777', 'Bandung', '123456', 'user', '2022-07-16 02:03:52', '2022-07-03 19:35:10', '2022-07-15 19:31:54', '2'),
-(9, 'primajasa', '$2y$10$AXRSWISdqWNEMNGkCc0LU.29STz3nuFUmM/H66sr56mwrg3LruFmq', 'primajasa', 'primajasa@gmail.com', '085723853284', 'leuwipanjang', '10104019', 'user', '2022-07-15 19:48:57', '2022-07-15 19:48:57', '2022-07-16 09:48:57', '1');
+(9, 'primajasa', '$2y$10$AXRSWISdqWNEMNGkCc0LU.29STz3nuFUmM/H66sr56mwrg3LruFmq', 'primajasa', 'primajasa@gmail.com', '085723853284', 'leuwipanjang', '10104019', 'user', '2022-07-15 19:48:57', '2022-07-15 19:48:57', '2022-07-16 09:48:57', '1'),
+(10, 'user1', '$2y$10$bDtpRKttV7N/leANKCJwFOopi1FCEPoJ5vVqP5wnwn3CRfZAvk52.', 'userbandung', 'user1@gmail.com', '09899', 'bandung', '123', 'user', '2022-07-16 06:43:33', '2022-07-16 06:43:33', '2022-07-16 20:43:33', '2');
 
 -- --------------------------------------------------------
 
@@ -325,7 +327,7 @@ ALTER TABLE `lokasi`
 -- AUTO_INCREMENT for table `penawaran`
 --
 ALTER TABLE `penawaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `prm_master_area`
@@ -355,7 +357,7 @@ ALTER TABLE `uang_muka`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
